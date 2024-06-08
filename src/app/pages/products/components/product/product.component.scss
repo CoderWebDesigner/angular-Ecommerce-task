@@ -1,0 +1,22 @@
+.card {
+  .card-img-top {
+
+    transition: all .4s ease-in-out;
+  }
+  .product-quantity{
+    left: 0;
+    top: 20px;
+    z-index: 100;
+    font-size: .75rem;
+  }
+  &:hover {
+    .card-img-top {
+
+      transform: scale(1.2);
+    }
+  }
+
+  button{
+    font-size: .85rem;
+  }
+}

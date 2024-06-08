@@ -1,0 +1,21 @@
+<div class="card border-0 rounded-0">
+  <div class="overflow-hidden">
+    <!-- Stock -->
+    <div class="product-quantity position-absolute p-1 fw-bold" [ngClass]="{'bg-primary-subtle text-primary-emphasis':data.AvailablePieces>0,'bg-danger-subtle text-danger-emphasis':data.AvailablePieces==0}">
+      {{data.AvailablePieces>0? data.AvailablePieces+' In Stock':'Out Of Stock'}}
+    </div>
+    <img [src]="data.ProductImg" class="card-img-top rounded-0" [alt]="data.ProductName">
+  </div>
+  <div class="card-body text-center">
+    <h5 class="card-title fw-light">{{data.ProductName}}</h5>
+    <small class="card-text fw-bold">
+      {{data.ProductPrice|currency:'USD'}}
+
+    </small>
+    <div class="mt-3">
+      <button [disabled]="data.AvailablePieces==0" class="btn btn-dark rounded-0">
+        {{data.AvailablePieces==0?'Sold Out':'Add To Card'}}
+      </button>
+    </div>
+  </div>
+</div>
