@@ -1,1 +1,14 @@
-<p>products works!</p>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-between py-3">
+        <h3 class="fw-bold d-inline-block">Products </h3>  <small>We Found <b>{{products.length}}</b> Products</small>
+      </div>
+      @for(product of products; track product.ProductId){
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <app-product [data]="product"></app-product>
+      </div>
+      }
+    </div>
+  </div>
+</section>
