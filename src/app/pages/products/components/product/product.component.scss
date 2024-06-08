@@ -5,7 +5,7 @@
   }
   .product-quantity{
     left: 0;
-    top: 20px;
+    top: 1.25rem;
     z-index: 100;
     font-size: .75rem;
   }
@@ -15,8 +15,13 @@
       transform: scale(1.2);
     }
   }
-
+  .edit{
+    top: 1.25rem;
+    right: 1.25rem;
+    line-height: 0;
+  }
   button{
     font-size: .85rem;
+    z-index: 100;
   }
 }
