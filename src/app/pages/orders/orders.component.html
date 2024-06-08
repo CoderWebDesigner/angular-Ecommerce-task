@@ -1,1 +1,38 @@
-<p>orders works!</p>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-between py-3">
+        <h3 class="fw-bold d-inline-block">Orders </h3>  <small>We Found <b>{{(_orderService.getOrders() | async).length}}</b> Order</small>
+      </div>
+
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Payment Method</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (order of _orderService.getOrders() | async; track order.OrderId) {
+                <tr>
+                  <th scope="row">{{order.OrderId}}</th>
+                  <td>{{order.OrderDate|date:'dd-MM-yyyy'}}</td>
+                  <td>{{order.User?.Name}}</td>
+                  <td>{{order.TotalPrice| number: '2.0-1'}}</td>
+                  <td>{{order.PaymentType}}</td>
+                  <td><button class="btn" [routerLink]="['/orders/details',order.OrderId]"><i class="icon-view"></i></button></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
