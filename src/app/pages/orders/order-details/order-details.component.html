@@ -1,1 +1,66 @@
-<p>order-details works!</p>
+<nav>
+  <ul class="list-unstyled">
+    <li><span class="h4">Order <span class="text-primary"># {{ order.OrderId }}</span></span> <small class="text-body-tertiary"> {{order.OrderDate | date : "dd-MM-yyyy"}}</small> </li>
+    <li>{{order.PaymentType}}</li>
+  </ul>
+
+</nav>
+<section class="bg-light py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card border-0  rounded-0">
+          <div class="card-header bg-dark text-white rounded-0">
+            User Info
+          </div>
+          <div class="card-body">
+            <ul class="p-0 list-unstyled">
+              <li class="mb-3"><i class="icon-user"></i> {{order.User.Name}}</li>
+              <li class="mb-3"><i class="icon-telephone"></i> {{order.User.Phone}}</li>
+              <li class="mb-3"><i class="icon-email"></i> {{order.User.Email}}</li>
+              <li class=""><i class="icon-pin"></i> {{order.User.Address}}</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card border-0">
+          <div class="card-header bg-dark text-white rounded-0">
+            Products
+          </div>
+          <div class="table-responsive border-bottom">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Image</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (product of order.Products; track product.ProductId) {
+                  <tr>
+                    <td>
+                      <img [src]="product.ProductImg" [alt]="product.ProductName" class="img-thumbnail" width="100">
+                    </td>
+                    <td>{{product.ProductName}}</td>
+                    <td>{{product.Quantity}}</td>
+                    <td>{{product.ProductPrice|currency:'USD'}}</td>
+                  </tr>
+                }
+                <tr>
+                  <td colspan="4" class="text-end">
+                    <p class="fw-bold">Total</p>
+                    <p class="fw-bold">{{order.TotalPrice|currency:'USD'}}</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
